@@ -56,7 +56,9 @@ const renderCardPaymentBrick = async (bricksBuilder) => {
 };
 
 setTimeout(() => {
-  renderCardPaymentBrick(bricksBuilder);
+  if (document.getElementById('cardPaymentBrick_container') && document.getElementById('meliReserveDiv')) {
+    renderCardPaymentBrick(bricksBuilder);
+  }
 }, 1500);
 
 
@@ -126,20 +128,32 @@ function downloadPDF() {
   document.body.removeChild(enlaceTemporal);
 }
 async function indicators() {
-  let serverRequest = await fetch('https://mindicador.cl/api');
-  let serverResponse = await serverRequest.json(); console.log(serverResponse);
-  let codes = ['dolar', 'euro', 'imacec', 'ipc', 'uf', 'utm'];
-  let data = Object.values(serverResponse).filter(a => codes.includes(a.codigo)).map(a => {
-    return { Nombre: a.codigo, Valor: a.valor }
-  });
-  const tickerList = document.getElementById('ticker-list');
-  tickerList.innerHTML = '';
-  data.forEach(dato => {
-    const listItem = document.createElement('li');
-    listItem.textContent = `${dato.Nombre.toUpperCase()}: ${dato.Valor}`;
-    tickerList.appendChild(listItem);
-  });
-
+  try {
+    let serverRequest = await fetch('https://mindicador.cl/api');
+    if (!serverRequest.ok) {
+      throw new Error(`HTTP error! status: ${serverRequest.status}`);
+    }
+    let serverResponse = await serverRequest.json();
+    let codes = ['dolar', 'euro', 'imacec', 'ipc', 'uf', 'utm'];
+    let data = Object.values(serverResponse).filter(a => a && codes.includes(a.codigo)).map(a => {
+      return { Nombre: a.codigo, Valor: a.valor }
+    });
+    const tickerList = document.getElementById('ticker-list');
+    if (tickerList) {
+      tickerList.innerHTML = '';
+      data.forEach(dato => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${dato.Nombre.toUpperCase()}: ${dato.Valor}`;
+        tickerList.appendChild(listItem);
+      });
+    }
+  } catch (error) {
+    console.error("Error cargando los indicadores económicos:", error);
+    const tickerContainer = document.querySelector('.ticker-container');
+    if (tickerContainer) {
+      tickerContainer.style.display = 'none';
+    }
+  }
 }
 indicators();
 
@@ -148,11 +162,13 @@ const navbarCollapse = document.querySelector('.navbar-collapse');
 const meliReserveDiv = document.querySelector('#meliReserveDiv');
 
 navbarToggler.addEventListener('click', function () {
-  if (!navbarCollapse.classList.contains('show')) {
-    meliReserveDiv.style.display = 'none'
-  }
-  else {
-    meliReserveDiv.style.display = 'block'
+  if (meliReserveDiv) {
+    if (!navbarCollapse.classList.contains('show')) {
+      meliReserveDiv.style.display = 'none';
+    }
+    else {
+      meliReserveDiv.style.display = 'block';
+    }
   }
 });
 

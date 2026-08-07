@@ -211,3 +211,12 @@ line-height: 20px;
 color: #121212;
 margin-top: 0;
 }
+
+.navbar-brand span {
+    color: #fff;
+    transition: color 0.3s ease-out;
+}
+
+.sticky .navbar-brand span {
+    color: #0067f4 !important;
+}
