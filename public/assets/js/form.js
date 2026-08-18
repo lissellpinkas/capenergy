@@ -1,18 +1,21 @@
-(function() {
+(function () {
   const form = document.getElementById("contact-form");
   const result = document.getElementById("result");
   const sendContactMessage = document.getElementById("sendContactMessage");
 
+  if (!form || !result || !sendContactMessage) return;
+
   form.addEventListener("submit", function (e) {
-    const formData = new FormData(form);
     e.preventDefault();
-    var object = {};
-    formData.forEach((value, key) => {
-      object[key] = value;
-    });
-    var json = JSON.stringify(object);
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
     sendContactMessage.style.display = "none";
-    result.innerHTML = "Envíando mensaje";
+    result.style.display = "inline-block";
+    result.className = "form-status-badge loading";
+    result.innerHTML = '<i class="lni lni-reload"></i> Enviando mensaje...';
 
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -23,28 +26,27 @@
       body: json
     })
       .then(async (response) => {
-        await response.json();
-        if (response.status == 200) {
-          result.classList.remove("danger");
-          result.classList.add("success");      
-          result.innerHTML = 'Tu mensaje ha sido envíado. Nos contactaremos con usted a la brevedad';
+        let jsonResponse = await response.json();
+        if (response.status === 200) {
+          result.className = "form-status-badge success";
+          result.innerHTML = '<i class="lni lni-checkmark-circle"></i> Mensaje enviado con éxito';
+          form.reset();
         } else {
-          result.classList.remove("success");
-          result.classList.add("danger");      
-          result.innerHTML = "Hubo un error, intentalo nuevamente";
+          result.className = "form-status-badge error";
+          result.innerHTML = jsonResponse.message || '<i class="lni lni-cross-circle"></i> Hubo un error, inténtalo nuevamente';
         }
       })
       .catch((error) => {
-        result.classList.remove("success");
-        result.classList.add("danger");      
-        result.innerHTML = "Hubo un error, intentalo nuevamente";
+        result.className = "form-status-badge error";
+        result.innerHTML = '<i class="lni lni-cross-circle"></i> Hubo un error, inténtalo nuevamente';
       })
-      .then(function () {
-        form.reset();
+      .finally(() => {
         setTimeout(() => {
           result.style.display = "none";
+          result.className = "form-status-badge";
+          result.innerHTML = "";
           sendContactMessage.style.display = "inline-block";
-        }, 7000);
+        }, 6000);
       });
   });
 })();

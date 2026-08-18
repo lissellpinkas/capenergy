@@ -12,6 +12,7 @@
     <meta name="keywords"
         content="energia solar chile, paneles solares mineria, almacenamiento de energia, ingenieria solar, proyectos fotovoltaicos, CAP energy, sustentabilidad chilena">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="B9s6h5BvoqiO6Ta4qEt_vQEVVGu0urcA570F5TJ00mU" />
 
     <!--====== Canonical URL ======-->
     <link rel="canonical" href="https://www.capenergy.cl/">
@@ -163,7 +164,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="slider-content">
-                                    <h1 class="title">CAP Energy Solution</h1>
+                                    <h1 class="title">CAP Energy Solutions</h1>
                                     <h3
                                         style="color: #fff; font-weight: 600; margin-top: 15px; text-transform: uppercase; font-size: 24px; letter-spacing: 1px;">
                                         Energía que impulsa el futuro.</h3>
@@ -561,7 +562,9 @@
 
                         <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
 
-                            <input type="hidden" name="access_key" value="e994d77d-03b1-48b3-838f-75335130a71e">
+                            <input type="hidden" name="access_key" value="946b95d7-fde2-443d-b8a9-72de3d434bc7">
+                            <input type="hidden" name="subject" value="Nuevo mensaje desde sitio web CAP Energy">
+                            <input type="checkbox" name="botcheck" id="" style="display: none;">
 
                             <div class="row">
                                 <div class="col-md-6">
@@ -588,20 +591,18 @@
                                     <div class="form-input mt-25">
                                         <label>Mensaje</label>
                                         <div class="input-items default">
-                                            <textarea name="massage" placeholder="Mensaje"
-                                                id="contactMessage"></textarea>
+                                            <textarea name="message" placeholder="Mensaje"
+                                                id="contactMessage" required></textarea>
                                             <i class="lni lni-pencil-alt"></i>
                                         </div>
                                     </div>
                                 </div>
-                                <p class="form-message"></p>
                                 <div class="col-md-12">
                                     <div class="form-input light-rounded-buttons mt-30">
-                                        <input type="hidden" name="redirect" value="https://web3forms.com/success">
                                         <button id="sendContactMessage" type="submit"
                                             class="main-btn light-rounded-two">Enviar Mensaje</button>
+                                        <div id="result" style="display: none;"></div>
                                     </div>
-                                    <p id="result"></p>
                                 </div>
                             </div>
                         </form>
