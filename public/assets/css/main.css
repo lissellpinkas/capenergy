@@ -99,9 +99,6 @@ max-width: 50%;
     color: #fff; /* Texto blanco */
     padding: 1px; /* Espaciado interno */
 }
-.features-area {
-  margin-top: 30rem;
-}
 }
 .close-button {
 position: absolute;
@@ -205,6 +202,38 @@ height: 100%;
 margin-top: auto;
 }
 
+/* Servicios: ícono arriba, centrado y del mismo tamaño en las tres tarjetas; título debajo */
+#services .single-features .features-title-icon {
+flex-direction: column-reverse;
+align-items: center;
+text-align: center;
+}
+
+#services .single-features .features-icon {
+width: 100%;
+}
+
+#services .single-features .features-icon img {
+height: 200px;
+width: 100%;
+object-fit: contain;
+}
+
+#services .single-features .features-title {
+margin-top: 20px;
+}
+
+@media (min-width: 992px) {
+#services .single-features .features-title-icon .features-title a {
+font-size: 26px;
+white-space: nowrap;
+}
+}
+
+#services .single-features .features-content {
+margin-top: 15px;
+}
+
 #services .single-features .features-content .text {
 font-size: 18px;
 line-height: 20px;
@@ -258,3 +287,36 @@ margin-top: 0;
     vertical-align: middle;
 }
 
+/* Quiénes Somos: el texto ocupa espacio real para que la sección siguiente no se le monte encima */
+.testimonial-area {
+    margin-bottom: 80px;
+}
+
+.testimonial-area .testimonial-right-content {
+    padding-top: 0;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.testimonial-area .testimonial-right-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: #e9ecef;
+    border-radius: 50px;
+    box-shadow: 0px 30px 70px 0px rgba(0, 0, 0, 0.07);
+}
+
+.testimonial-area .testimonial-right-content .quota {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: -30px 0 0 15px;
+}
+
+.testimonial-area .testimonial-right-content .quota i {
+    color: #28a745;
+}
