@@ -320,3 +320,72 @@ margin-top: 0;
 .testimonial-area .testimonial-right-content .quota i {
     color: #28a745;
 }
+
+/* Proyectos realizados */
+.projects-area {
+    padding-top: 100px;
+}
+
+.project-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 3px 14px rgb(0 0 0 / 15%);
+}
+
+.project-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.project-body {
+    padding: 25px 25px 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-name {
+    font-size: 22px;
+    color: #121212;
+}
+
+.project-location {
+    font-size: 15px;
+    color: #28a745;
+    font-weight: 600;
+}
+
+.project-type {
+    font-size: 16px;
+    line-height: 22px;
+    color: #121212;
+    margin: 12px 0 15px;
+}
+
+.project-specs {
+    margin-top: auto;
+    border-top: 1px solid #e9ecef;
+}
+
+.project-specs li {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.project-specs li span {
+    color: #6c757d;
+}
+
+.project-specs li strong {
+    color: #121212;
+    white-space: nowrap;
+}
