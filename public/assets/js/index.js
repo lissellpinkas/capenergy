@@ -90,27 +90,6 @@ document.getElementById("closeButton").addEventListener("click", function () {
   document.querySelector(".fixed-box").style.display = "none";
 });
 
-function changeContentOnResize() {
-  let firstCarousel = document.getElementById('firstCarousel');
-  let secondCarousel = document.getElementById('secondCarousel');
-  let screenWidth = window.innerWidth;
-
-  if (screenWidth <= 768) {
-    firstCarousel.innerHTML = '<div class="video-container"> <video class="fullscreen-video" autoplay muted loop playsinline> <source src="assets/images/promoVid.mp4" type="video/mp4"> Tu navegador no soporta el tag de video. </video> <div class="overlay-text"> <h1 style="color: white; font-size: 28px;" >CAP Energy Solutions</h1> <h3 style="color: white; font-size: 18px; margin-top: 5px;" >Energía que impulsa el futuro.</h3> <p style="color: white; font-size: 14px; margin-top: 10px; line-height: 1.4;" >Desarrollamos soluciones de energía renovable, almacenamiento e ingeniería para la minería, industria y acuicultura, creando proyectos eficientes, sostenibles y de alto impacto.</p> <!-- <a href="#aboutUs" class="main-btn rounded-one">Saber Más</a> --> </div> </div>';
-    if (secondCarousel) {
-      secondCarousel.innerHTML = '<div class="video-container"> <video class="fullscreen-video" autoplay muted loop playsinline> <source src="assets/images/promoVid.mp4" type="video/mp4"> Tu navegador no soporta el tag de video. </video> <div class="overlay-text"> <h3 style="color: white" >CAP Energy Solutions</h3> <!-- <a href="#nextTrip" class="main-btn rounded-one">Saber Más</a> --> </div> </div>';
-    }
-  }
-  else {
-    firstCarousel.innerHTML = '<div class="container"> <div class="row"> <div class="col-lg-6"> <div class="slider-content"> <h1 class="title">CAP Energy Solutions</h1> <h3 style="color: #fff; font-weight: 600; margin-top: 15px; text-transform: uppercase; font-size: 24px; letter-spacing: 1px;">Energía que impulsa el futuro.</h3> <p class="text">Desarrollamos soluciones de energía renovable, almacenamiento e ingeniería para la minería, industria y acuicultura, creando proyectos eficientes, sostenibles y de alto impacto.</p> <!-- <ul class="slider-btn rounded-buttons"> <li><a class="main-btn rounded-one" href="#aboutUs">Saber Más</a></li> </ul> --> </div> </div> </div> </div>';
-    if (secondCarousel) {
-      secondCarousel.innerHTML = '<div class="container"> <div class="row"> <div class="col-lg-6"> <div class="slider-content"> <h1 class="title">CAP Energy Solutions</h1> <!-- <ul class="slider-btn rounded-buttons"> <li><a class="main-btn rounded-one" href="#nextTrip">Saber Más</a></li> </ul> --> </div> </div> </div> </div>';
-    }
-  }
-}
-window.onload = changeContentOnResize;
-window.onresize = changeContentOnResize;
-
 function downloadPDF() {
   const rutaImagen = '/assets/images/files/brochure2.pdf';
 

@@ -119,32 +119,6 @@ left: 5rem
 }
 
 
-/* PRUEBa */
-.video-container {
-position: relative;
-height: 100vh;
-}
-
-.fullscreen-video {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
-
-.overlay-text {
-position: absolute;
-top: 75%;
-left: 50%;
-transform: translate(-50%, -50%);
-text-align: center;
-color: white;
-font-size: 24px;
-}
-/* PRUEBA */
-
 #video-background {
 position: absolute;
 top: 0;
@@ -153,6 +127,44 @@ width: 100%;
 height: 100%;
 object-fit: cover;
 z-index: -1;
+background-color: #121212;
+}
+
+/* Portada en celular: el mismo video a pantalla completa, con el texto centrado abajo */
+@media (max-width: 768px) {
+#firstCarousel {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: flex-end;
+}
+
+#firstCarousel .container {
+    padding-bottom: 12vh;
+}
+
+#firstCarousel .slider-content {
+    padding: 0;
+    text-align: center;
+}
+
+#firstCarousel .slider-content .title {
+    font-size: 28px;
+    line-height: 36px;
+}
+
+#firstCarousel .slider-content h3 {
+    font-size: 18px !important;
+    margin-top: 5px !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+}
+
+#firstCarousel .slider-content .text {
+    font-size: 14px;
+    line-height: 1.4;
+    margin-top: 10px;
+}
 }
 .ticker-container {
 overflow: hidden;
